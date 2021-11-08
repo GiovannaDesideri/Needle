@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+  <title> Needle - Encontre o seu tamanho! </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles.css') }}">
+</head>
+
+<body style="background-color: #c7dded">
+
+  
+
+  <center>
+    <div style="app-header">
+      <img src="static/imgsite1.png" alt="logo">
+      <h2>Qual o meu tamanho ideal? </h2>
+      <br>
+      
+      <h3> Needle te ajuda a acertar nas compras online! </h3>
+      <br>
+      
+      <h4> Preencha os campos e saiba qual seu tamanho ideal:</h4>
+      <br>
+    </div>
+  </center>
+
+  <form class="text-center" style="margin-bottom:10px" method="POST" action="/predict">
+    <table width="100%">
+      <tbody>
+          <tr>
+            <td>
+              <div class="form-field">{{ form.bustotorax.label }} {{ form.bustotorax(size=13) }}</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <div class="form-field">{{ form.quadril.label }} {{ form.quadril }}</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-field">{{ form.cintura.label }} {{ form.cintura }}</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-field">{{ form.genero.label }} {{ form.genero(size=12) }}</div>
+              <!--
+                <select id="equalification" class="">
+                  <option id="selectHeader"> Selecione o gênero da roupa </option>
+                  <option value="male">{{form.genero.value}}</option>
+                  <option value="female">{{form.genero.value}}</option>
+                </select>
+              -->
+            </td>
+          </tr>
+      </tbody>
+    </table>
+    <input id="submit" style="margin-bottom: 10px;" name="submit" type="submit" onclick="startSpinner()" value="Predict">
+    
+    <br>
+  </form>
+
+  <div class="d-flex justify-content-center">
+    <div id="loader" style="color:black; display: none;" class="spinner-border"></div>
+  </div>
+  <div class="output-container">
+    <center>
+      <div id="output">
+        <h5 id="a">Você deve comprar o tamanho: </h5>
+        <h3 id="b">{{ form.abc }}</h3>
+      </div>
+    </center>
+  </div>
+ 
+      <center>
+        <img src="static/imgsite2.png" alt="IBM">
+      </center> 
+  
+  <script>
+
+window.onload = function exampleFunction() { 
+  
+  //var output = document.getElementById("output");
+  //output.style.display = "none"
+} 
+
+    function startSpinner() {
+      var x = document.getElementById("loader");
+      x.style.display = "block";
+      var output = document.getElementById("output");
+      output.style.display = "none"
+      setTimeout(function () {
+        var y = document.getElementById("output");
+        var x = document.getElementById("loader");
+        var a = document.getElementById("a");
+        var b = document.getElementById("b");
+        x.style.display = "none";
+        y.style.display = "block"
+        a.style.display = "block"
+        b.style.display = "block"
+      }, 3000);
+
+    }
+  </script>
+
+</body>
+
+</html>
