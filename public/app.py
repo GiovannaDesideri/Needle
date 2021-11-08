@@ -12,7 +12,7 @@ from flask_wtf import FlaskForm
 
 app = Flask(__name__, instance_relative_config=False)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
-app.secret_key = 'random key' 
+app.secret_key = 'randomkey' 
 
 if __name__ == "__main__":
   app.run(debug=True, host='0.0.0.0')
